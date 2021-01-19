@@ -1,10 +1,16 @@
+import createDatabaseConnection from './database.js';
+import createWebServer from './webserver.js';
+
 function createCore() {
+
+    const database = createDatabaseConnection();
+    const webserver = createWebServer();
 
     function start() {
 
         console.log(`> [Core] starting...`);    
-        //db
-        //webserver
+        database.start();
+        webserver.start();
         console.log(`> [Core] Starting done! System running!`);
     }
 
@@ -12,8 +18,8 @@ function createCore() {
     function stop() {
 
         console.log('> [Core] stopping...');
-        //db
-        //webserver
+        database.stop();
+        webserver.stop();
         console.log('> [Core] Stopping done!');
     }
 
