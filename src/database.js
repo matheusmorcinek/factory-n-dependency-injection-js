@@ -6,6 +6,9 @@ function createDatabaseConnection() {
         console.log('> [database] Connecting to MySQL...');
         console.log('> [database] Running migrations...');
         console.log('> [database] Starting done!');
+
+        // intentionally throwing an error here, to prove that when running the core test, we are testing the unit / component independently
+        throw new Error('Connection failed!');
     }
 
     function stop() {

@@ -1,5 +1,22 @@
 import createCore from "../src/core.js";
 
+function createMock(){
+
+    function start() {
+
+        console.log('> [mock] ...');
+    }
+
+    function start() {
+
+        console.log('> [mock] ...');
+    }
+
+    return {
+        start, 
+        stop
+    }
+}
 
 describe('Testing core when imported', () => {
 
@@ -7,8 +24,22 @@ describe('Testing core when imported', () => {
 
         const core = createCore();
 
-        console.log(core);
-
         expect(core).toHaveProperty('start');
+        expect(core).toHaveProperty('stop');
+    });
+
+    test('when started, should not throw errors', () => {
+
+        const databaseMock = createMock();
+        const webserverMock = createMock(); 
+
+        const core = createCore({
+            database: databaseMock,
+            webserver: webserverMock
+        });
+
+        expect(() => {
+            core.start();
+        }).not.toThrow();
     });
 });

@@ -1,10 +1,12 @@
 import createDatabaseConnection from './database.js';
 import createWebServer from './webserver.js';
 
-function createCore() {
+function createCore(configurations = {}) {
 
-    const database = createDatabaseConnection();
-    const webserver = createWebServer();
+    //inverting dependencies...
+
+    const database = configurations.database || createDatabaseConnection();
+    const webserver = configurations.webserver || createWebServer();
 
     function start() {
 
