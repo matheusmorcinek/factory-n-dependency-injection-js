@@ -9,5 +9,5 @@ try {
 } catch (error) {
 
     console.log('Uncaught error!');
-    console.error(erro);
+    console.error(error);
 }
